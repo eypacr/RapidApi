@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\ApiConsume\HotelProject.WebApi\HotelProject.WebApi.csproj" />
+  </ItemGroup>
+
 </Project>

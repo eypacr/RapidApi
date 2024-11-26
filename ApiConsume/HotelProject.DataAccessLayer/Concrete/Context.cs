@@ -5,9 +5,8 @@ namespace HotelProject.DataAccessLayer.Concrete
 {
     public class Context:DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public Context(DbContextOptions<Context> options) : base(options)
         {
-            optionsBuilder.UseSqlServer("Server=ACAR;initial catalog=RapidApiDb;integrated security=true");
         }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Service> Services { get; set; }

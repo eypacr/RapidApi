@@ -1,33 +1,48 @@
+using HotelProject.BusinessLayer.Abstract;
+using HotelProject.BusinessLayer.Concrete;
+using HotelProject.DataAccessLayer.Abstract;
 using HotelProject.DataAccessLayer.Concrete;
+using HotelProject.DataAccessLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<Context>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Veritabaný baðlantý ayarlarýný yapýlandýrma
+builder.Services.AddDbContext<Context>((serviceProvider, options) =>
+{
+    var configuration = serviceProvider.GetRequiredService<IConfiguration>();
+    var connectionString = configuration.GetConnectionString("DefaultConnection");
 
+    options.UseSqlServer(connectionString, sqlOptions =>
+    {
+        // Baðlantý baþarýsýz olduðunda yeniden denemeyi etkinleþtirme
+        sqlOptions.EnableRetryOnFailure();
+    });
+});
 
+// Generic repository ve service'ler için DI yapýlandýrmasý
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericManager<>));
+builder.Services.AddScoped<IRoomService, RoomManager>();
 
-// Add services to the container.
-
+// API, Swagger ve Controller'lar için yapýlandýrma
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Geliþtirme ortamýnda Swagger'ý etkinleþtir
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage(); // Hata raporlarýný geliþtirme ortamýnda gösterir
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

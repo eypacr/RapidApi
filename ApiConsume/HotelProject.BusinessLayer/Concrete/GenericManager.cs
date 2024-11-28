@@ -3,11 +3,11 @@ using HotelProject.DataAccessLayer.Abstract;
 
 namespace HotelProject.BusinessLayer.Concrete
 {
-    public class GenericService<T> : IGenericService<T> where T : class
+    public class GenericManager<T> : IGenericService<T> where T : class
     {
         private readonly IGenericRepository<T> _repository;
 
-        public GenericService(IGenericRepository<T> repository)
+        public GenericManager(IGenericRepository<T> repository)
         {
             _repository = repository;
         }

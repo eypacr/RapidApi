@@ -4,9 +4,9 @@ using HotelProject.EntityLayer.Concrete;
 
 namespace HotelProject.BusinessLayer.Concrete
 {
-    public class RoomService : GenericService<Room>, IRoomService
+    public class ServiceManager : GenericManager<Service>, IServiceService
     {
-        public RoomService(IGenericRepository<Room> repository) : base(repository)
+        public ServiceManager(IGenericRepository<Service> repository) : base(repository)
         {
         }
     }

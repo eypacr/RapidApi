@@ -4,9 +4,9 @@ using HotelProject.EntityLayer.Concrete;
 
 namespace HotelProject.BusinessLayer.Concrete
 {
-    public class StaffService : GenericService<Staff>, IStaffService
+    public class SubscribeManager : GenericManager<Subscribe>, ISubscribeService
     {
-        public StaffService(IGenericRepository<Staff> repository) : base(repository)
+        public SubscribeManager(IGenericRepository<Subscribe> repository) : base(repository)
         {
         }
     }

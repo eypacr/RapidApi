@@ -4,9 +4,9 @@ using HotelProject.EntityLayer.Concrete;
 
 namespace HotelProject.BusinessLayer.Concrete
 {
-    public class ServiceService : GenericService<Service>, IServiceService
+    public class TestimonialManager : GenericManager<Testimonial>, ITestimonialService
     {
-        public ServiceService(IGenericRepository<Service> repository) : base(repository)
+        public TestimonialManager(IGenericRepository<Testimonial> repository) : base(repository)
         {
         }
     }

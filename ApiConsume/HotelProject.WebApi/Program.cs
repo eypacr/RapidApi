@@ -3,6 +3,7 @@ using HotelProject.BusinessLayer.Concrete;
 using HotelProject.DataAccessLayer.Abstract;
 using HotelProject.DataAccessLayer.Concrete;
 using HotelProject.DataAccessLayer.Repositories;
+using HotelProject.EntityLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +36,15 @@ builder.Services.AddScoped<IStaffService, StaffManager>();
 builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
 builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("OtelApiCors", opts =>
+    {
+        opts.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
+
+
 // API, Swagger ve Controller'lar için yapýlandýrma
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -51,6 +61,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("OtelApiCors");
+
 app.UseAuthorization();
 app.MapControllers();
 

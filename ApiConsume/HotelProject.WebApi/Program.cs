@@ -23,8 +23,17 @@ builder.Services.AddDbContext<Context>((serviceProvider, options) =>
 // Generic repository ve service'ler için DI yapýlandýrmasý
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IRoomRepository, RoomRepository>();
+builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
+builder.Services.AddScoped<IStaffRepository, StaffRepository>();
+builder.Services.AddScoped<ISubscribeRepository, SubscribeRepository>();
+builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
+
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericManager<>));
 builder.Services.AddScoped<IRoomService, RoomManager>();
+builder.Services.AddScoped<IServiceService, ServiceManager>();
+builder.Services.AddScoped<IStaffService, StaffManager>();
+builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
+builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 
 // API, Swagger ve Controller'lar için yapýlandýrma
 builder.Services.AddControllers();

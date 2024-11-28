@@ -1,0 +1,47 @@
+﻿@model UpdateStaffViewModel
+@{
+    ViewData["Title"] = "UpdateStaff";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="container mt-1">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-warning text-white">
+            <h4 class="mb-0">Personel Güncelle</h4>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <input type="hidden" asp-for="StaffId" />
+
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Personel Adı</label>
+                    <input type="text" asp-for="Name" class="form-control" id="Name" placeholder="Adı girin" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Title" class="form-label">Personel Ünvanı</label>
+                    <input type="text" asp-for="Title" class="form-control" id="Title" placeholder="Ünvan girin" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="SocialMedia1" class="form-label">Sosyal Medya 1</label>
+                    <input type="text" asp-for="SocialMedia1" class="form-control" id="SocialMedia1" placeholder="Sosyal medya bağlantısı girin" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="SocialMedia2" class="form-label">Sosyal Medya 2</label>
+                    <input type="text" asp-for="SocialMedia2" class="form-control" id="SocialMedia2" placeholder="Sosyal medya bağlantısı girin" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="SocialMedia3" class="form-label">Sosyal Medya 3</label>
+                    <input type="text" asp-for="SocialMedia3" class="form-control" id="SocialMedia3" placeholder="Sosyal medya bağlantısı girin" />
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-warning btn-lg rounded-pill">Personeli Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model AddTestimonialViewModel
+@{
+    ViewData["Title"] = "AddTestimonial";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="container mt-1">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Referans Ekle</h4>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Referans Adı</label>
+                    <input type="text" asp-for="Name" class="form-control" id="Name" placeholder="Referans adı girin" />
+                </div>
+                <div class="mb-3">
+                    <label for="Title" class="form-label">Referans Başlığı</label>
+                    <input type="text" asp-for="Title" class="form-control" id="Title" placeholder="Referans başlığı girin" />
+                </div>
+                <div class="mb-3">
+                    <label for="Description" class="form-label">Referans Açıklaması</label>
+                    <textarea asp-for="Description" class="form-control" id="Description" placeholder="Referans hakkında açıklama girin" rows="4"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="Image" class="form-label">Referans Resmi</label>
+                    <input type="text" asp-for="Image" class="form-control" id="Image" />
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success btn-lg rounded-pill">Referans Ekle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

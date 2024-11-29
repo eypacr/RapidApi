@@ -3,7 +3,7 @@ using HotelProject.BusinessLayer.Concrete;
 using HotelProject.DataAccessLayer.Abstract;
 using HotelProject.DataAccessLayer.Concrete;
 using HotelProject.DataAccessLayer.Repositories;
-using HotelProject.EntityLayer.Concrete;
+using HotelProject.WebApi.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,6 +35,8 @@ builder.Services.AddScoped<IServiceService, ServiceManager>();
 builder.Services.AddScoped<IStaffService, StaffManager>();
 builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
 builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
+
+builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
 
 builder.Services.AddCors(opt =>
 {

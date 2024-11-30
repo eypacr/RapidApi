@@ -29,6 +29,7 @@ builder.Services.AddScoped<IStaffRepository, StaffRepository>();
 builder.Services.AddScoped<ISubscribeRepository, SubscribeRepository>();
 builder.Services.AddScoped<ITestimonialRepository, TestimonialRepository>();
 builder.Services.AddScoped<IAboutRepository, AboutRepository>();
+builder.Services.AddScoped<IBookingRepository, BookingRepository>();
 
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericManager<>));
 builder.Services.AddScoped<IRoomService, RoomManager>();
@@ -37,6 +38,7 @@ builder.Services.AddScoped<IStaffService, StaffManager>();
 builder.Services.AddScoped<ISubscribeService, SubscribeManager>();
 builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 builder.Services.AddScoped<IAboutService, AboutManager>();
+builder.Services.AddScoped<IBookingService, BookingManager>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
 

@@ -4,6 +4,7 @@ using HotelProject.DataAccessLayer.Concrete;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelProject.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20241201105209_add_SeedData_Room")]
+    partial class add_SeedData_Room
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,18 +56,6 @@ namespace HotelProject.DataAccessLayer.Migrations
                     b.HasKey("AboutId");
 
                     b.ToTable("Abouts");
-
-                    b.HasData(
-                        new
-                        {
-                            AboutId = 1,
-                            Content = "Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet",
-                            CustomerCount = 22,
-                            RoomCount = 24,
-                            StaffCount = 20,
-                            Title1 = "Hotelier'e",
-                            Title2 = "Hoş Geldiniz"
-                        });
                 });
 
             modelBuilder.Entity("HotelProject.EntityLayer.Concrete.AppRole", b =>
@@ -306,50 +296,6 @@ namespace HotelProject.DataAccessLayer.Migrations
                     b.HasKey("ServiceId");
 
                     b.ToTable("Services");
-
-                    b.HasData(
-                        new
-                        {
-                            ServiceId = 1,
-                            Description = "Odalarımız Çok Rahat",
-                            ServiceIcon = "fa fa-hotel fa-2x text-primary",
-                            Title = "Odalarımız"
-                        },
-                        new
-                        {
-                            ServiceId = 2,
-                            Description = "Yemek Ve Restorant Açıklaması",
-                            ServiceIcon = "fa fa-utensils fa-2x text-primary",
-                            Title = "Yemek & Restorant"
-                        },
-                        new
-                        {
-                            ServiceId = 3,
-                            Description = "Spa Ve Fitnes Açıklaması",
-                            ServiceIcon = "fa fa-spa fa-2x text-primary",
-                            Title = "Spa & Fitness"
-                        },
-                        new
-                        {
-                            ServiceId = 4,
-                            Description = "Spor ve oyunlar Oynama İmkanı",
-                            ServiceIcon = "fa fa-swimmer fa-2x text-primary",
-                            Title = "Spor & Oyunlar"
-                        },
-                        new
-                        {
-                            ServiceId = 5,
-                            Description = "Kutlama Ve Eğlence Organizasyonu",
-                            ServiceIcon = "fa fa-glass-cheers fa-2x text-primary",
-                            Title = "Kutlama & Eğlence"
-                        },
-                        new
-                        {
-                            ServiceId = 6,
-                            Description = "Yoga ve Meditasyon",
-                            ServiceIcon = "fa fa-dumbbell fa-2x text-primary",
-                            Title = "Yoga & Meditasyon"
-                        });
                 });
 
             modelBuilder.Entity("HotelProject.EntityLayer.Concrete.Staff", b =>
@@ -383,26 +329,6 @@ namespace HotelProject.DataAccessLayer.Migrations
                     b.HasKey("StaffId");
 
                     b.ToTable("Staffs");
-
-                    b.HasData(
-                        new
-                        {
-                            StaffId = 1,
-                            Name = "Hadi",
-                            SocialMedia1 = "/hotel-html-template/img/team-1.jpg",
-                            SocialMedia2 = "x",
-                            SocialMedia3 = "y",
-                            Title = "House Keaper"
-                        },
-                        new
-                        {
-                            StaffId = 2,
-                            Name = "Ali",
-                            SocialMedia1 = "/hotel-html-template/img/team-2.jpg",
-                            SocialMedia2 = "x",
-                            SocialMedia3 = "y",
-                            Title = "Genel Müdür"
-                        });
                 });
 
             modelBuilder.Entity("HotelProject.EntityLayer.Concrete.Subscribe", b =>
@@ -449,32 +375,6 @@ namespace HotelProject.DataAccessLayer.Migrations
                     b.HasKey("TestimonialId");
 
                     b.ToTable("Testimonials");
-
-                    b.HasData(
-                        new
-                        {
-                            TestimonialId = 1,
-                            Description = "Rastgele Bir Açıklama Ekledim",
-                            Image = "/hotel-html-template/img/testimonial-4.jpg",
-                            Name = "Eylül Acar",
-                            Title = "İşletme Müdürü"
-                        },
-                        new
-                        {
-                            TestimonialId = 2,
-                            Description = "Rastgele Bir Açıklama Ekledim",
-                            Image = "/hotel-html-template/img/testimonial-3.jpg",
-                            Name = "Hadi Acar",
-                            Title = "Mağaza Ceosu"
-                        },
-                        new
-                        {
-                            TestimonialId = 3,
-                            Description = "Rastgele Bir Açıklama Ekledim",
-                            Image = "/hotel-html-template/img/testimonial-2.jpg",
-                            Name = "Musa Acar",
-                            Title = "İşletme Yöneticisi"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

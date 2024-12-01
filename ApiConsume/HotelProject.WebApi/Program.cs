@@ -40,8 +40,10 @@ builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
 builder.Services.AddScoped<IAboutService, AboutManager>();
 builder.Services.AddScoped<IBookingService, BookingManager>();
 
+// AutoMapper yapýlandýrmasý
 builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
 
+// CORS yapýlandýrmasý
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("OtelApiCors", opts =>
@@ -50,18 +52,24 @@ builder.Services.AddCors(opt =>
     });
 });
 
-
-// API, Swagger ve Controller'lar için yapýlandýrma
+// API ve Swagger yapýlandýrmasý
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Geliþtirme ortamýnda Swagger'ý etkinleþtir
+// Otomatik migration uygulama
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<Context>();
+    dbContext.Database.Migrate();
+}
+
+// Middleware yapýlandýrmasý
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage(); // Hata raporlarýný geliþtirme ortamýnda gösterir
+    app.UseDeveloperExceptionPage(); // Geliþtirme hatalarýný gösterir
     app.UseSwagger();
     app.UseSwaggerUI();
 }

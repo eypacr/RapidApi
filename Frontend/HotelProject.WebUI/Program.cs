@@ -1,3 +1,5 @@
+using HotelProject.BusinessLayer.Abstract;
+using HotelProject.BusinessLayer.Concrete;
 using HotelProject.DataAccessLayer.Concrete;
 using HotelProject.EntityLayer.Concrete;
 using HotelProject.WebUI.Mapping;
@@ -23,6 +25,7 @@ builder.Services.AddIdentity<AppUser, AppRole>()
 // Diðer servislerin eklenmesi
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
+
 builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
 
 var app = builder.Build();

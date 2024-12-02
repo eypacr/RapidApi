@@ -1,0 +1,72 @@
+﻿@model UpdateBookingDto
+@{
+    ViewData["Title"] = "UpdateBooking";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-warning text-white">
+            <h4 class="mb-0">Rezervasyon Güncelleme</h4>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <input type="hidden" asp-for="BookingId" />
+
+                <div class="mb-3">
+                    <label for="Name" class="form-label">Misafir Adı Soyadı</label>
+                    <input type="text" asp-for="Name" class="form-control" id="Name" placeholder="Misafir adı soyadı girin" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Mail" class="form-label">Misafir Mail Adresi</label>
+                    <input type="email" asp-for="Mail" class="form-control" id="Mail" placeholder="Misafir e-posta adresi girin" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Checkin" class="form-label">Misafir Giriş Tarihi</label>
+                    <input type="date" asp-for="Checkin" class="form-control" id="Checkin" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="CheckOut" class="form-label">Misafir Çıkış Tarihi</label>
+                    <input type="date" asp-for="CheckOut" class="form-control" id="CheckOut" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="AdultCount" class="form-label">Yetişkin Sayısı</label>
+                    <input type="number" asp-for="AdultCount" class="form-control" id="AdultCount" placeholder="Yetişkin sayısını girin" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="ChildCount" class="form-label">Çocuk Sayısı</label>
+                    <input type="number" asp-for="ChildCount" class="form-control" id="ChildCount" placeholder="Çocuk sayısını girin" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="RoomCount" class="form-label">Oda Sayısı</label>
+                    <input type="number" asp-for="RoomCount" class="form-control" id="RoomCount" placeholder="Oda sayısını girin" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Status" class="form-label">Durum</label>
+                    <select asp-for="Status" class="form-control" id="Status">
+                        <option value="Onaylandı">Onaylandı</option>
+                        <option value="Müşteri Aranacak">Müşteri Aranacak</option>
+                        <option value="İptal Edildi">İptal Edildi</option>
+                    </select>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="SpecialRequest" class="form-label">Özel İstekler</label>
+                    <textarea class="form-control" rows="5" asp-for="SpecialRequest" id="SpecialRequest" placeholder="Özel isteklerinizi girin"></textarea>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-warning btn-lg rounded-pill">Rezervasyonu Güncelle</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

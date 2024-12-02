@@ -1,6 +1,5 @@
 ﻿using HotelProject.BusinessLayer.Abstract;
 using HotelProject.EntityLayer.Concrete;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelProject.WebApi.Controllers
@@ -56,6 +55,27 @@ namespace HotelProject.WebApi.Controllers
         {
             var values = await _bookingService.TGetByIdAsync(id);
             return Ok(values);
+        }
+
+        [HttpGet("BookingAproved/{id}")]
+        public async Task<IActionResult> BookingAproved(int id)
+        {
+            await _bookingService.TBookingStatusChangeApprovedAsync(id);
+            return Ok();
+        }
+
+        [HttpGet("BookingCancel/{id}")]
+        public async Task<IActionResult> BookingCancel(int id)
+        {
+            await _bookingService.TBookingStatusChangeCancelAsync(id);
+            return Ok();
+        }
+        
+        [HttpGet("BookingWait/{id}")]
+        public async Task<IActionResult> BookingWait(int id)
+        {
+            await _bookingService.TBookingStatusChangeWaitAsync(id);
+            return Ok();
         }
     }
 }

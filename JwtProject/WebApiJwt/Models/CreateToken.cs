@@ -8,7 +8,7 @@ namespace WebApiJwt.Models
     {
         public string TokenCreate()
         {
-            var bytes = Encoding.UTF8.GetBytes("aspnetcoreapiapi");
+            var bytes = Encoding.UTF8.GetBytes("aspnetcoreapiaspnetcoreapiaspnetcoreapiaspnetcoreapi");
 
             SymmetricSecurityKey key = new SymmetricSecurityKey(bytes);
 
